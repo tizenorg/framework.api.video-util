@@ -10,6 +10,7 @@ BuildRequires:  pkgconfig(mm-common)
 BuildRequires:  pkgconfig(mm-transcode)
 BuildRequires:  pkgconfig(capi-base-common)
 BuildRequires:  pkgconfig(capi-system-info)
+BuildRequires:  pkgconfig(appcore-efl)
 
 BuildRequires:  cmake
 BuildRequires:  gettext-devel
@@ -41,7 +42,9 @@ make %{?jobs:-j%jobs}
 %install
 %make_install
 mkdir -p %{buildroot}/%{_datadir}/license
+mkdir -p %{buildroot}/usr/bin
 cp -rf %{_builddir}/%{name}-%{version}/LICENSE.APLv2.0 %{buildroot}/%{_datadir}/license/%{name}
+cp test/video_util_test %{buildroot}/usr/bin/
 
 %post
 
@@ -51,6 +54,7 @@ cp -rf %{_builddir}/%{name}-%{version}/LICENSE.APLv2.0 %{buildroot}/%{_datadir}/
 %manifest capi-media-video-util.manifest
 %{_libdir}/lib*.so.*
 %{_datadir}/license/%{name}
+/usr/bin/*
 
 %files devel
 %{_libdir}/lib*.so

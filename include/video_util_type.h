@@ -29,6 +29,7 @@ extern "C" {
 #endif
 
 #define VIDEO_UTIL_ERROR_CLASS TIZEN_ERROR_VIDEO_UTIL
+#define TRANSCODER_FEATURE_PATH "http://tizen.org/feature/multimedia.transcoder"
 /**
  * @file video_util_type.h
  */
@@ -41,6 +42,7 @@ extern "C" {
 /**
  * @ingroup CAPI_MEDIA_VIDEO_UTIL_MODULE
  * @brief Enumeration for errors of a video util.
+ * @since_tizen 2.3
  */
 typedef enum
 {
@@ -57,6 +59,7 @@ typedef enum
 /**
  * @ingroup CAPI_MEDIA_VIDEO_UTIL_MODULE
  * @brief Enumeration for video codec.
+ * @since_tizen 2.3
  */
 typedef enum
 {
@@ -70,6 +73,7 @@ typedef enum
 /**
  * @ingroup CAPI_MEDIA_VIDEO_UTIL_MODULE
  * @brief Enumeration for audio codec.
+ * @since_tizen 2.3
  */
 typedef enum
 {
@@ -82,6 +86,7 @@ typedef enum
 /**
  * @ingroup CAPI_MEDIA_VIDEO_UTIL_MODULE
  * @brief Enumeration for formats of a media.
+ * @since_tizen 2.3
  */
 typedef enum
 {
@@ -93,12 +98,15 @@ typedef enum
 /**
  * @ingroup CAPI_MEDIA_VIDEO_UTIL_MODULE
  * @brief Video util handle.
+ * @since_tizen 2.3
  */
 typedef struct video_util_s *video_util_h;
 
 /**
  * @ingroup CAPI_MEDIA_VIDEO_UTIL_MODULE
  * @brief Called regularly during the video transcoding.
+ * @since_tizen 2.3
+ *
  * @details The interval of callback invocation depends on the framework.
  *
  * @param[in] current_position The current position in milliseconds
@@ -114,6 +122,7 @@ typedef void (*video_util_transcoding_progress_cb)(unsigned long current_positio
 /**
  * @ingroup CAPI_MEDIA_VIDEO_UTIL_MODULE
  * @brief Called when transcoding is finished just before storing in the file.
+ * @since_tizen 2.3
  *
  * @param[in] error_code The error code of video util
  * @param[in] user_data The user data passed from the callback registration function
@@ -124,6 +133,8 @@ typedef void (*video_util_transcoding_completed_cb)(video_util_error_e error_cod
 
 /**
  * @brief Called iteratively to notify you about the supported file formats.
+ * @since_tizen 2.3
+ *
  * @param[in] format The format of media files
  * @param[in] user_data The user data passed from the foreach function
  *
@@ -136,6 +147,8 @@ typedef bool (*video_util_supported_file_format_cb)(video_util_file_format_e for
 
 /**
  * @brief Called iteratively to notify you of supported video codec.
+ * @since_tizen 2.3
+ *
  * @param[in] format The codec of video
  * @param[in] user_data The user data passed from the foreach function
  *
@@ -148,6 +161,8 @@ typedef bool (*video_util_supported_video_encoder_cb)(video_util_video_codec_e c
 
 /**
  * @brief Called iteratively to notify you about the supported audio codec.
+ * @since_tizen 2.3
+ *
  * @param[in] format The codec of audio
  * @param[in] user_data The user data passed from the foreach function
  *

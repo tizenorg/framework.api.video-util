@@ -34,8 +34,6 @@
 #define VIDEO_UTIL_MAXIMUM_FPS			30
 #define VIDEO_UTIL_MAXIMUM_BPS			4294967295UL
 
-#define TRANSCODER_FEATURE_PATH "http://tizen.org/feature/multimedia.transcoder"
-
 static int __video_util_create_transcode_handle(video_util_s *handle);
 static int __video_util_destroy_transcode_handle(video_util_s *handle);
 static int __video_util_check_transcode_is_busy(video_util_s * handle, bool *is_busy);
@@ -288,7 +286,8 @@ static int __video_util_foreach_supported_type(video_util_type_e type, video_uti
 
 	video_util_type_cb_s *codec_cb = (video_util_type_cb_s*)calloc(1, sizeof(video_util_type_cb_s));
 
-	if (codec_cb == NULL) {
+	if(codec_cb == NULL)
+	{
 		video_util_error("OUT_OF_MEMORY(0x%08x)", VIDEO_UTIL_ERROR_OUT_OF_MEMORY);
 		return VIDEO_UTIL_ERROR_OUT_OF_MEMORY;
 	}
